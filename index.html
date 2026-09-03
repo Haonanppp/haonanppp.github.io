@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Haonan Pan, data scientist in Austin, TX. M.S. Analytics, USC. Three publications in machine learning.">
 <meta name="color-scheme" content="light dark">
-<title>Haonan Pan — Data Scientist</title>
+<title>Haonan Pan · Data Scientist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap">
@@ -166,9 +166,12 @@ a{color:inherit;}
 .proj__go{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-top:auto;padding-top:12px;}
 .proj--wide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2.4vw,40px);align-items:start;}
 .proj--wide .col{display:flex;flex-direction:column;gap:12px;height:100%;}
+.proj__links{display:flex;flex-wrap:wrap;gap:24px;margin-top:auto;padding-top:12px;}
+.proj__links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;}
 
 /* ---------- tiles ---------- */
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+@media (max-width:760px){.tiles{grid-template-columns:1fr;}}
 .tile{background:var(--ground);padding:clamp(18px,2.2vw,28px);}
 .tile h4{margin:0;font-family:var(--mono);font-weight:500;font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sienna);}
 .tile p{margin-top:10px;font-weight:300;font-size:.95rem;line-height:1.58;}
@@ -222,10 +225,14 @@ a{color:inherit;}
       <div class="hero__rule"></div>
       <div class="hero__role"><span>Data Scientist</span><span>Machine Learning</span><span>Austin, TX</span></div>
       <p class="hero__lede">
-        Data scientist with an M.S. in Analytics from USC. I spent the past year as a research
-        assistant in the LIME Lab, building and evaluating predictive models on structured data and
-        comparing traditional methods against LLM-based approaches. Three publications, one as first
-        author. Based in Austin, Texas, and looking for my next role.
+        Data scientist with an M.S. in Analytics from USC and three clinical machine learning
+        publications, one as first author. More than a year in the LIME Lab gave me working fluency
+        across the full range of models, from classical statistics and gradient boosting to large
+        language models fine-tuned locally or through an API, and a more exacting way of handling
+        data: define the question first, validate the inputs, report the uncertainty. I build my own
+        datasets, pulling exactly the features I need out of large databases and selecting the right
+        sample. Work in industry taught me the rest: how to turn an analysis into a report that
+        someone else can act on. Based in Austin, Texas, and looking for my next role.
       </p>
       <p class="hero__open"><b>Open to</b> data scientist, data analyst, and data engineer roles</p>
     </div>
@@ -286,9 +293,11 @@ a{color:inherit;}
       <p class="eyebrow">Research</p>
       <div>
         <h2>Publications</h2>
-        <p class="lede">Three publications with USC collaborators, built on MIMIC-IV, a de-identified
-        intensive-care database. Clinical data is messy, the outcomes are rare, and a wrong cohort
-        definition quietly invalidates everything downstream.</p>
+        <p class="lede">Three publications with USC collaborators. Two are built on MIMIC-IV, a
+        de-identified hospital database where a patient's course is scattered across dozens of tables;
+        the third is a retrieval-grounded language model system accepted to ACL 2026. Clinical data is
+        messy, the outcomes are rare, and a wrong cohort definition quietly invalidates everything
+        downstream.</p>
       </div>
     </div>
 
@@ -298,11 +307,15 @@ a{color:inherit;}
         <h3>Machine Learning-Based Model for Postoperative Stroke Prediction in Coronary Artery Disease</h3>
         <p class="pub__authors"><em>Pan, H.</em> · Chen, S. · Pishgar, E. · Alaei, K. · Placencia, G. · Pishgar, M.</p>
         <p class="body">Stroke after coronary revascularization is rare enough that a model can score
-        well by predicting it never happens. The pipeline handles missingness, encoding, scaling, and
-        correlation filtering, selects features with LASSO, corrects the class imbalance, tunes
-        XGBoost, CatBoost, SVM, and logistic regression, and reports SHAP attributions. Best test
-        AUROC was 0.855, with sensitivity and specificity reported per model rather than behind a
-        single headline number.</p>
+        well by predicting it never happens. I completed the CITI training and data use agreement
+        myself, wrote the BigQuery SQL that joined 53 MIMIC-IV tables into one record per patient, and
+        applied the inclusion criteria that narrowed 364,627 unique patients to a cohort of 7,023.
+        The analysis handles missingness, encoding, scaling, and correlation filtering, selects
+        features with LASSO, corrects the class imbalance, tunes XGBoost, CatBoost, SVM, and logistic
+        regression, and reports SHAP attributions. Best test AUROC was 0.855, with bootstrap
+        confidence intervals, calibration curves, and sensitivity and specificity reported per model
+        rather than behind a single headline number. I wrote the methods section and produced every
+        table and figure.</p>
       </div>
     </article>
 
@@ -343,13 +356,16 @@ a{color:inherit;}
       <div>
         <h3>USC LIME Lab</h3>
         <p class="role__title">Research Assistant</p>
-        <p class="body">LIME is the Language, Intelligence, and Model Evaluation/Ethics lab. My work
-        sat on the evaluation side.</p>
+        <p class="body">LIME is the Language, Intelligence, and Model Evaluation/Ethics lab. The
+        problem was binary risk classification on a psychosocial survey: 200 respondents, 200
+        variables, free-text answers included. Small enough that every point estimate needs an
+        interval next to it.</p>
         <ul>
-          <li>Benchmarked logistic regression, XGBoost, and LLM-based approaches for binary risk classification on the same data and split.</li>
-          <li>Engineered features and ran validation on a 200-variable dataset, reaching 85.1% accuracy and 0.804 AUC against a published XGBoost benchmark of 0.645 AUC.</li>
-          <li>Built the reproducible Python pipelines for training, checkpoint evaluation, and error analysis that kept comparisons consistent across runs.</li>
-          <li>Wrote up findings, model comparisons, and interpretation summaries for advisor review and publication.</li>
+          <li>Established logistic regression and XGBoost baselines first. They came out weak and unstable, 0.45 recall and 0.54 precision with wide k-fold cross-validated 95% confidence intervals, so the ceiling of the classical route was clear before anything else was tried.</li>
+          <li>Transformed the raw survey responses into structured prompts so a language model could make the prediction directly, then benchmarked locally deployed open-weight models (Qwen, Llama, an open-source GPT) against API models (GPT, DeepSeek).</li>
+          <li>Diagnosed the untuned models over-predicting the positive class (0.93 recall, 0.34 precision) and fixed it with reinforcement fine-tuning plus chain-of-thought and JSON-structured output: 85.1% accuracy, 0.804 AUC, 0.81 recall, 0.64 precision, narrower intervals, against a published XGBoost benchmark of 0.645 AUC.</li>
+          <li>Tested zero-shot, few-shot, chain-of-thought, and structured-output variants and kept the negative result: few-shot examples inflated already long inputs and degraded performance, so zero-shot won.</li>
+          <li>Built the reproducible, Git-versioned Python pipelines for data preparation, training, checkpoint evaluation, and error analysis, run on Google Cloud virtual machines and USC's CARC cluster.</li>
         </ul>
       </div>
     </article>
@@ -359,11 +375,14 @@ a{color:inherit;}
       <div>
         <h3>Accenture</h3>
         <p class="role__title">Data Analyst Intern</p>
-        <p class="body">Marketing analytics for a client whose channel data disagreed across systems.</p>
+        <p class="body">Two separate client engagements: a login anomaly detection pilot inside an
+        identity and access program for a mid-size retailer, and marketing analytics for a client
+        whose channel data disagreed across systems.</p>
         <ul>
-          <li>Analyzed 120k customer interactions and transaction records in SQL and Python across email, paid media, and promotional campaigns.</li>
-          <li>Built the Tableau dashboards giving marketing and client stakeholders weekly visibility into conversion rate, CAC, and return on ad spend.</li>
-          <li>Segmented 25k+ customers by engagement and purchase behavior, surfacing high-value cohorts and a low-retention group with churn 18% above baseline.</li>
+          <li>Ran the anomaly detection pilot's daily loop: pulled the previous day's login events in SQL, ran the detection rules, sampled the high-risk alerts and read the raw logs to see whether a price change or data export followed, reviewed findings with the client's IT team, maintained the false-positive record, and tuned thresholds from it. The job was turning login events into data that was detectable, explainable, and operable.</li>
+          <li>Analyzed 120k customer interactions and transaction records in SQL and Python across email, paid media, and promotional campaigns, reconciling the conflicting source systems before any reporting was built on them.</li>
+          <li>Segmented 25k+ customers by engagement and purchase behavior, surfacing a low-retention group with churn 18% above baseline, and built the Tableau dashboards giving stakeholders weekly visibility into conversion rate, CAC, and return on ad spend.</li>
+          <li>Produced the recurring analytical reports that turned findings into recommendations for technical and non-technical audiences.</li>
         </ul>
       </div>
     </article>
@@ -373,11 +392,14 @@ a{color:inherit;}
       <div>
         <h3>Tianze Auto Parts Co.</h3>
         <p class="role__title">Product Analytics Intern</p>
-        <p class="body">A parts distributor where the weekly numbers were assembled by hand.</p>
+        <p class="body">A 50-person parts distributor where warehouse movements started as paper slips
+        keyed into Excel by other people. I sat in the product department and owned the question of
+        whether that data could be trusted before any decision was made on it.</p>
         <ul>
-          <li>Analyzed 15k+ sales and inventory records across 200 SKUs for demand patterns, revenue trends, and stock movement.</li>
-          <li>Built the weekly KPI reporting on revenue, gross margin, inventory turnover, and backorder volume used for leadership review.</li>
-          <li>Automated the recurring parts of that workflow, cutting weekly manual reporting time by 60%.</li>
+          <li>Built a recurring data quality check set over 15k+ sales and inventory records: entry latency (handwritten date against system posting date), duplicate suspects, and inventory logic violations such as sales with no receipt or negative on-hand stock.</li>
+          <li>Reconciled stock against the identity ending = opening + inbound − outbound + returns; any SKU with a residual was pulled from replenishment recommendations and flagged for a physical count.</li>
+          <li>Triaged findings by severity rather than treating every error alike: P0 halted system-driven replenishment and escalated to the product lead, warehouse supervisor, and owner; P1 marked a category untrusted; P2 went to the entry clerk and was excluded from that period's analysis.</li>
+          <li>Automated the weekly product analytics cycle across roughly 200 SKUs with a VBA macro, cutting a 3 to 4 hour manual process to 40 to 60 minutes of review.</li>
         </ul>
       </div>
     </article>
@@ -395,9 +417,9 @@ a{color:inherit;}
 </section>
 
 <section class="collage" aria-label="Projects">
-  <a class="cell cell--paper proj proj--wide s12" href="https://github.com/Haonanppp/Decision-Analysis-LLM" target="_blank" rel="noopener">
+  <div class="cell cell--paper proj proj--wide s12">
     <div class="col">
-      <span class="cell__k">Python · Claude Agent SDK · FastAPI</span>
+      <span class="cell__k">Python · Claude Agent SDK · FastAPI · Docker · Railway</span>
       <h3>Decision Analysis LLM</h3>
       <p>An agentic decision-analysis assistant. You describe a decision in plain language; it frames
       the problem, asks only the questions that still matter, elicits preferences through concrete
@@ -410,17 +432,21 @@ a{color:inherit;}
       alternatives, and critiquing the analysis, while every number comes from deterministic,
       seed-stable Python. Value-of-information analysis identifies which unresolved uncertainty is
       worth checking before committing, and each report records the verbatim request, the full
-      Q&amp;A, and per-item provenance, so the result can be audited rather than taken on trust.</p>
-      <span class="proj__go">View repository →</span>
+      Q&amp;A, and per-item provenance, so the result can be audited rather than taken on trust.
+      It runs as a deployed service, containerized with Docker and served with FastAPI over WebSocket
+      on Railway, so you can try it rather than read about it.</p>
+      <span class="proj__links"><a href="https://decision-analysis-llm-production.up.railway.app" target="_blank" rel="noopener">Try it live →</a><a href="https://github.com/Haonanppp/Decision-Analysis-LLM" target="_blank" rel="noopener">View repository →</a></span>
     </div>
-  </a>
+  </div>
 
   <a class="cell cell--ink proj s4" href="https://github.com/Haonanppp/ML-Model-Stroke" target="_blank" rel="noopener">
-    <span class="cell__k">Python · MIMIC-IV</span>
+    <span class="cell__k">Python · SQL · BigQuery · MIMIC-IV</span>
     <h3>Postoperative Stroke Prediction</h3>
-    <p>The code behind the arXiv paper, kept readable: preprocessing, LASSO selection, class-imbalance
-    handling, four model families, SHAP, and a results table reporting AUROC with confidence intervals
-    alongside sensitivity and specificity, so a reader can see the trade-off each model makes.</p>
+    <p>The code behind the arXiv paper, kept readable. The cohort was assembled with BigQuery SQL
+    across 53 MIMIC-IV tables; the modeling covers preprocessing, LASSO selection, class-imbalance
+    handling, four model families, SHAP, and a results table reporting AUROC with bootstrap
+    confidence intervals alongside sensitivity and specificity, so a reader can see the trade-off
+    each model makes.</p>
     <span class="proj__go">View repository →</span>
   </a>
 
@@ -453,11 +479,12 @@ a{color:inherit;}
       <div><h2>What I work in</h2></div>
     </div>
     <div class="tiles">
-      <div class="tile"><h4>Programming</h4><p>Python · SQL (PostgreSQL, MySQL) · R</p></div>
-      <div class="tile"><h4>Machine learning</h4><p>scikit-learn · XGBoost · LightGBM · CatBoost · TensorFlow · Keras · SHAP · feature engineering · model evaluation</p></div>
-      <div class="tile"><h4>Statistics &amp; experimentation</h4><p>Regression · hypothesis testing · A/B testing · ANOVA · Monte Carlo · time series</p></div>
-      <div class="tile"><h4>Data &amp; BI</h4><p>Pandas · NumPy · Tableau · Power BI · advanced Excel · JMP</p></div>
-      <div class="tile"><h4>Platforms</h4><p>Snowflake · Google Cloud Platform · GitHub · Jupyter · Streamlit · FastAPI</p></div>
+      <div class="tile"><h4>Programming</h4><p>Python · SQL (BigQuery, Snowflake, PostgreSQL, MySQL) · R · Git</p></div>
+      <div class="tile"><h4>Machine learning</h4><p>scikit-learn · XGBoost · LightGBM · CatBoost · TensorFlow · Keras · SHAP · feature engineering · model evaluation · anomaly detection</p></div>
+      <div class="tile"><h4>Large language models</h4><p>LLM APIs (GPT, DeepSeek, Claude) · local open-weight deployment (Qwen, Llama) · reinforcement fine-tuning · prompt design and structured output · RAG and GraphRAG · agentic workflows on the Claude Agent SDK</p></div>
+      <div class="tile"><h4>Statistics &amp; experimentation</h4><p>Regression · hypothesis testing · bootstrap and cross-validated confidence intervals · calibration · A/B testing · ANOVA · Monte Carlo · time series</p></div>
+      <div class="tile"><h4>Data &amp; BI</h4><p>Pandas · NumPy · Tableau · Power BI · advanced Excel (VBA) · JMP · data quality checks · source reconciliation</p></div>
+      <div class="tile"><h4>Platforms</h4><p>Google Cloud Platform · BigQuery · Azure Databricks · Snowflake · Docker · FastAPI · Railway · Streamlit · Jupyter</p></div>
     </div>
   </div>
 </section>
@@ -473,7 +500,7 @@ a{color:inherit;}
         <div class="edu__when">Aug 2024 – May 2026 · Los Angeles, CA</div>
         <div class="edu__school">University of Southern California</div>
         <div class="edu__deg">M.S. in Analytics</div>
-        <div class="edu__extra">Machine Learning · Database Systems · Optimization · Data Visualization. Research: LIME Lab.</div>
+        <div class="edu__extra">Machine Learning · Database Systems (taught on Snowflake) · Optimization · Data Visualization. Research: LIME Lab.</div>
       </div>
       <div class="edu__item">
         <div class="edu__when">Aug 2019 – May 2024 · Stockton, CA</div>
